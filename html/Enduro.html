@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="UTF-8">
+  <title>Enduro</title>
+  <link rel="stylesheet" href="Endurocss.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+p {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+}
+</style>
+ </head>
+ <body>
+
+  <audio id="ganar" preload><source src="applause_from_crowd.mp3" type="audio/mp3" />Tu navegador no es compatible con el elemento audio de html5. Use un navegador compatible.</audio>
+  <audio id="moto" preload><source src="kawasaki_ninja.mp3" type="audio/mp3" />Tu navegador no es compatible con el elemento audio de html5. Use un navegador compatible.</audio>
+  <audio id="pierde" preload><source src="lose_sound.mp3" type="audio/mp3" />Tu navegador no es compatible con el elemento audio de html5. Use un navegador compatible.</audio>
+  <audio id="choca" preload><source src="choque_carro.mp3" type="audio/mp3" />Tu navegador no es compatible con el elemento audio de html5. Use un navegador compatible.</audio>
+  <audio id="frena" preload><source src="car_brake.mp3" type="audio/mp3" />Tu navegador no es compatible con el elemento audio de html5. Use un navegador compatible.</audio>
+  <audio id="boton" preload><source src="u_click.mp3" type="audio/mp3" />Tu navegador no es compatible con el elemento audio de html5. Use un navegador compatible.</audio>
+  <canvas id="ProyectoEnduro" width="640" height="380">
+    <script src="Nivel1Desierto.js"></script>
+    <!--<script src="Nivel2Bosque.js"></script>-->
+    <!--<script src="Nivel3Playa.js"></script>-->
+    <!--<script src="Nivel4Ciudad.js"></script>-->
+    <!--<script src="Nivel5Espacio.js"></script>-->
+  </canvas>
+  <div id="countdown"></div>
+  <p id="demo"></p>
+
+<script>
+
+//CONTADOR
+// Set the date we're counting down to
+var countDownDate = new Date("August 28, 2019 00:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;  
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EN TRE GA";
+  }
+}, 1000);
+</script>
+</body>
+</html>
