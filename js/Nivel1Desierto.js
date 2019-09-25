@@ -52,13 +52,13 @@ x=10, y=255; //moto se inicializa en esa posición
 moto.onload = function(){ //A moto se le asignará una función
     setInterval(actualizarJuego,1000/100); // La función es actualizar la pantalla metiendo 100 imagenes por segundo
   }
-moto.src='PersonajeMoto.png' //A moto se le asigna la foto PersonajeMoto
+moto.src='F:\\usuarios\\alumno\\Escritorio\\quinto\\Programación estática\\Enduro\\css\\imagenes\\PersonajeMoto.png' //A moto se le asigna la foto PersonajeMoto
 
 var fondo = new Image(); //A la variable fondo se le asignará una imágen
 fondo.onload = function(){//La variable tendrá una función
   contexto.drawImage(fondo,x,0); //El fondo se dibujará en la posición 00
 }
-fondo.src='Desierto.jpeg'; //La foto asignada en fondo es Desierto
+fondo.src='F:\\usuarios\\alumno\\Escritorio\\quinto\\Programación estática\\Enduro\\css\\imagenes\\Desierto.jpeg'; //La foto asignada en fondo es Desierto
 
 function actualizarJuego(){ //La función actualizarJuego hará:
     y +=5; //Velocidad en que cae el personaje
