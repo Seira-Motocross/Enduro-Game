@@ -2,7 +2,20 @@ var canvas=document.getElementById('ProyectoEnduro'); //Conecta el html con el j
 var contexto=canvas.getContext('2d'); // Canvas cn el contexto en 2d
 
 
-window.addEventListener("keydown", controles, true); // Cuando la tecla se mantiene apretada, llama a la función avanzar y le asigna verdadero
+window.addEventListener("keydown", controles, false); // Cuando la tecla se mantiene apretada, llama a la función avanzar y le asigna verdadero
+
+function controles(evento){ //controles tiene evento como parametro
+    //  if (evento.keyCode==68){ //Si la tecla apretada es 68, avanza en x 
+    //      x-=9;   
+    // }
+    //  if (evento.keyCode==65){ //Si la tecla apretada es 65, retrocede en x 
+    //      x+=10;
+    //  }
+    if (evento.keyCode==87){ //Si la tecla apretada es 87, avanza en y
+        if(!saltando) y-=130; //Si saltando es verdadero sube 50 en y
+        saltando=true; //Es para que al mantener apretada la tecla no siga subiendo y se pase del límite dado para saltar.
+    }
+}
 
 /////////////////////////////
 //PARA VALIDAR EL EXLORADOR//
@@ -32,36 +45,48 @@ listenKeyright = function (e) {
     return true;
 };
 
-function controles(evento){ //controles tiene evento como parametro
-    if (evento.keyCode==68){ //Si la tecla apretada es 68, avanza en x 
-        x-=9;   
-    }
-    if (evento.keyCode==65){ //Si la tecla apretada es 65, retrocede en x 
-        x+=10;
-    }
-    if (evento.keyCode==87){ //Si la tecla apretada es 87, avanza en y
-        if(!saltando) y-=50; //Si saltando es verdadero sube 50 en y
-        saltando=true; //Es para que al mantener apretada la tecla no siga subiendo y se pase del límite dado para saltar.
-    }
-}
-
 var moto = new Image(); //A la variable moto se le asignará una imagen
 saltando= false;
-x=10, y=255; //moto se inicializa en esa posición
 
-moto.onload = function(){ //A moto se le asignará una función
-    setInterval(actualizarJuego,1000/100); // La función es actualizar la pantalla metiendo 100 imagenes por segundo
-  }
-moto.src='F:\\usuarios\\alumno\\Escritorio\\quinto\\Programación estática\\Enduro\\css\\imagenes\\PersonajeMoto.png' //A moto se le asigna la foto PersonajeMoto
+x=10, y=255, xc=0; //moto se inicializa en esa posición
+
+moto.src='F:/usuarios/alumno/Escritorio/quinto/Programación estática/Enduro/css/imagenes/PersonajeMoto.png' //A moto se le asigna la foto PersonajeMoto
+function dibujarMoto(){
+    contexto.drawImage(moto, 40,y,70,70);
+}
 
 var fondo = new Image(); //A la variable fondo se le asignará una imágen
-fondo.onload = function(){//La variable tendrá una función
-  contexto.drawImage(fondo,x,0); //El fondo se dibujará en la posición 00
+fondo.src='F:/usuarios/alumno/Escritorio/quinto/Programación estática/Enduro/css/imagenes/fondo.jpg'; //La foto asignada en fondo es Desierto
+function dibujarFondo(){//La variable tendrá una función
+    contexto.drawImage(fondo, x, 0, 640, 380); //El fondo se dibujará en la posición 00
 }
-fondo.src='F:\\usuarios\\alumno\\Escritorio\\quinto\\Programación estática\\Enduro\\css\\imagenes\\Desierto.jpeg'; //La foto asignada en fondo es Desierto
+
+var cactus = new Image(); //A la variable fondo se le asignará una imágen
+cactus.src='F:/usuarios/alumno/Escritorio/quinto/Programación estática/Enduro/css/imagenes/cactus.png';
+function dibujarCactus(){//La variable tendrá una función
+    contexto.drawImage(cactus, xc, 264,38,60); //El fondo se dibujará en la posición 00
+}
+
+function MovCactus(){
+    if(xc <-5){
+        xc = ancho+100;
+    }
+    else{
+        xc -= 4;
+    }
+}
+var ancho=640;
+var alto= 380;
+
+function borrarCanvas(){
+    canvas.width= ancho;
+    canvas.height= alto;
+}
+setInterval(actualizarJuego,1000/100);
 
 function actualizarJuego(){ //La función actualizarJuego hará:
-    y +=5; //Velocidad en que cae el personaje
+    borrarCanvas();
+    y +=2; //Velocidad en que cae el personaje
     if (y>255){ //Para que vuelva al piso
         y=255;
         saltando=false;
@@ -72,12 +97,9 @@ function actualizarJuego(){ //La función actualizarJuego hará:
     //if (x<=0){//Para que no se ppase del límite de la pantalla
     //    x=0;
     //}
-  contexto.drawImage(fondo, x, 0, 640, 380); // Dibuja el fondo en la posicio 00 con un ancho de 640 y un largo de 380
-  contexto.drawImage(moto, 10,y,70,70); //Dibuja la moto en laposición en la que esté x, y=255 y el ancho y largo=70
-  //contexto.drawImage(arbol, 30, 40, 80, 150, x, y, 90, 180); //Código para que aparezca cierta parte de la imágen arbol
+    dibujarFondo(); // Dibuja el fondo en la posicio 00 con un ancho de 640 y un largo de 380
+    MovCactus();
+    dibujarCactus();
+    dibujarMoto();//Dibuja la moto en laposición en la que esté x, y=255 y el ancho y largo=70
+    
 }
-
-
-
-
-
