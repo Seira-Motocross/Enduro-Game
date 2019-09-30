@@ -1,0 +1,6 @@
+body { background-color:peachpuff; margin:0px; text-align:center; }
+#gameScreen { width:800px; height:600px; margin:10px 10px 10px 10px; border:1px solid #888888; box-shadow:10px 10px 20px chocolate;background-image: url('Desierto.jpeg')}
+p{color: blanchedalmond; font-family: 'Times New Roman', Times, serif}
+#demo{color: black; background-color: sandybrown; font-family: 'Courier New', Courier, monospace} 
+
+

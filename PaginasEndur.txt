@@ -1,0 +1,6 @@
+Páginas: 
+https://www.youtube.com/watch?v=hWglK8nWh60
+https://www.w3schools.com/tags/canvas_filltext.asp
+https://developer.mozilla.org/es/docs/Games/Tutorials/2D_breakout_game_Phaser/The_score
+
+
