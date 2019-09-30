@@ -81,7 +81,7 @@ var alto= 380;
 
 function choque(){
     if (xc>=40 && xc<=70){
-        if (yMoto>= 60){
+        if (yMoto>= 225){
             muerto= true;
             console.log(muerto);
         }
