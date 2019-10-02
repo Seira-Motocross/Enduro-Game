@@ -14,7 +14,7 @@ function controles(evento){ //controles tiene evento como parametro
     if (evento.keyCode==87){ //Si la tecla apretada es 87, avanza en y
         if(!saltando) yMoto-=130; //Si saltando es verdadero sube 50 en y
         saltando=true; //Es para que al mantener apretada la tecla no siga subiendo y se pase del límite dado para saltar.
-        score+=2; //Cuando salta suma 2 puntos
+        
     }
 }
 
@@ -79,11 +79,19 @@ function MovCactus(){
 var ancho=640;
 var alto= 380;
 
+
 function choque(){
     if (xc>=40 && xc<=70){
         if (yMoto>= 225){
             muerto= true;
-            console.log(muerto);
+        }
+    }
+}
+
+function sumarPuntos(){
+    if (xc==40){
+        if (yMoto<225){
+           score +=2;
         }
     }
 }
@@ -102,7 +110,7 @@ setInterval(actualizarJuego,1000/100);
 function actualizarJuego(){ //La función actualizarJuego hará:
     borrarCanvas();
     if (muerto!=true){
-        yMoto +=2; //Velocidad en que cae el personaje
+       yMoto +=2; //Velocidad en que cae el personaje
         if (yMoto>255){ //Para que vuelva al piso
             yMoto=255;
             saltando=false;
@@ -115,6 +123,7 @@ function actualizarJuego(){ //La función actualizarJuego hará:
         //}
         dibujarFondo(); // Dibuja el fondo en la posicio 00 con un ancho de 640 y un largo de 380
         choque();
+        sumarPuntos();
         MovCactus();
         dibujarCactus();
         dibujarMoto();//Dibuja la moto en laposición en la que esté x, y=255 y el ancho y largo=70
