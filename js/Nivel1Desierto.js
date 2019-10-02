@@ -118,6 +118,11 @@ function actualizarJuego(){ //La función actualizarJuego hará:
         MovCactus();
         dibujarCactus();
         dibujarMoto();//Dibuja la moto en laposición en la que esté x, y=255 y el ancho y largo=70
-        contexto.fillText("Puntos: "+score, 5, 20);
+        contexto.font = "bold 30px Courier Nuevo";
+        contexto.fillStyle = "#A52A2A";
+        contexto.fillText("Puntos: "+score, 15, 45);
+        contexto.font ="bold 30px Courier Nuevo";
+        contexto.fillStyle = "#A52A2A";
+        contexto.fillText("Seira Motocross",225,30);
     }
 }
