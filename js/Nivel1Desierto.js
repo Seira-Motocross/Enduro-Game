@@ -109,7 +109,7 @@ setInterval(actualizarJuego,1000/100);
 
 function actualizarJuego(){ //La función actualizarJuego hará:
     borrarCanvas();
-    if (muerto!=true){
+    if (muerto!=true && score<30){
        yMoto +=2; //Velocidad en que cae el personaje
         if (yMoto>255){ //Para que vuelva al piso
             yMoto=255;
