@@ -85,6 +85,16 @@ function MovCactus(){
 var ancho=640;
 var alto= 380;
 
+function perder(){
+    if (muerto==true){
+        contexto.font = "bold 30px Courier Nuevo";
+        contexto.fillStyle = "#A52A2A";
+        contexto.fillText("Puntos: "+score, 15, 45);
+        contexto.font ="bold 30px Courier Nuevo";
+        contexto.fillStyle = "#A52A2A";
+        contexto.fillText("Perdiste",250,200);
+    }
+}
 
 function choque(){
     if (xc>=40 && xc<=70){
@@ -140,5 +150,6 @@ function actualizarJuego(){ //La función actualizarJuego hará:
         contexto.font ="bold 30px Courier Nuevo";
         contexto.fillStyle = "#A52A2A";
         contexto.fillText("Seira Motocross",225,30);
+        perder();
     }
 }
