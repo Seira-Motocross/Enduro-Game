@@ -85,14 +85,23 @@ function MovCactus(){
 var ancho=640;
 var alto= 380;
 
-function perder(){
-    if (muerto==true){
+function carteles(){
+    if (muerto!=true){
         contexto.font = "bold 30px Courier Nuevo";
         contexto.fillStyle = "#A52A2A";
         contexto.fillText("Puntos: "+score, 15, 45);
         contexto.font ="bold 30px Courier Nuevo";
         contexto.fillStyle = "#A52A2A";
-        contexto.fillText("Perdiste",250,200);
+        contexto.fillText("Seira Motocross",225,30);
+    }
+    if (muerto==true){
+        contexto.font ="bold 30px Courier Nuevo";
+        contexto.fillStyle = "#A52A2A";
+        contexto.fillText("¡Perdiste!",254,170);
+        contexto.font ="bold 15px Courier Nuevo";
+        contexto.fillStyle = "#A52A2A";
+        contexto.fillText("Aprete la barra espaciadora para volver a comenzar.",150,200);
+        contexto.fillText("Puntaje total: "+score,270, 220 );
     }
 }
 
@@ -144,12 +153,6 @@ function actualizarJuego(){ //La función actualizarJuego hará:
         MovCactus();
         dibujarCactus();
         dibujarMoto();//Dibuja la moto en laposición en la que esté x, y=255 y el ancho y largo=70
-        contexto.font = "bold 30px Courier Nuevo";
-        contexto.fillStyle = "#A52A2A";
-        contexto.fillText("Puntos: "+score, 15, 45);
-        contexto.font ="bold 30px Courier Nuevo";
-        contexto.fillStyle = "#A52A2A";
-        contexto.fillText("Seira Motocross",225,30);
-        perder();
+        carteles();
     }
 }
