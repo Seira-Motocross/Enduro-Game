@@ -11,10 +11,9 @@ function controles(evento){ //controles tiene evento como parametro
     //  if (evento.keyCode==65){ //Si la tecla apretada es 65, retrocede en x 
     //      x+=10;
     //  }
-    if (evento.keyCode==87){ //Si la tecla apretada es 87, avanza en y
+    if (evento.keyCode==87 || evento.keyCode==32 && muerto==false){ //Si la tecla apretada es 87, avanza en y
         if(!saltando) yMoto-=130; //Si saltando es verdadero sube 50 en y
         saltando=true; //Es para que al mantener apretada la tecla no siga subiendo y se pase del límite dado para saltar.
-        
     }
 }
 
@@ -101,6 +100,7 @@ function borrarCanvas(){
     canvas.height= alto;
 }
 
+
 ///////////////////////////
 //////BUCLE PRINCIPAL//////
 //////////////////////////
@@ -108,9 +108,9 @@ function borrarCanvas(){
 setInterval(actualizarJuego,1000/100);
 
 function actualizarJuego(){ //La función actualizarJuego hará:
-    borrarCanvas();
     if (muerto!=true && score<30){
-       yMoto +=2; //Velocidad en que cae el personaje
+        borrarCanvas();
+        yMoto +=2; //Velocidad en que cae el personaje
         if (yMoto>255){ //Para que vuelva al piso
             yMoto=255;
             saltando=false;
