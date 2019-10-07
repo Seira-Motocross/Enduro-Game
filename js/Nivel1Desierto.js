@@ -56,7 +56,7 @@ function dibujarMoto(){
 }
 
 var fondo = new Image(); //A la variable fondo se le asignará una imágen
-fondo.src='../css/imagenes/fondo.jpg'; //La foto asignada en fondo es Desierto
+fondo.src='../css/imagenes/Desierto3.jpg'; //La foto asignada en fondo es Desierto
 function dibujarFondo(){//La variable tendrá una función
     contexto.drawImage(fondo, x, 0, 640, 380); //El fondo se dibujará en la posición 00
 }
