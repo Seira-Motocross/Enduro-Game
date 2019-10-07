@@ -15,6 +15,13 @@ function controles(evento){ //controles tiene evento como parametro
         if(!saltando) yMoto-=130; //Si saltando es verdadero sube 50 en y
         saltando=true; //Es para que al mantener apretada la tecla no siga subiendo y se pase del límite dado para saltar.
     }
+    else{
+        if (evento.keyCode==32 && muerto==true){
+            muerto= false;
+            xc= ancho+100;
+            score= 0;
+        }
+    }
 }
 
 /////////////////////////////
