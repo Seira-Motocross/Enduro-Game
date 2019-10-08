@@ -12,8 +12,7 @@ function controles(evento){ //controles tiene evento como parametro
         varPausa+=1;
     }
     if (evento.keyCode==87 || evento.keyCode==32 && muerto==false){ //Si la tecla apretada es 87, avanza en y
-        if(!saltando) yMoto-=130; //Si saltando es verdadero sube 50 en y
-        saltando=true; //Es para que al mantener apretada la tecla no siga subiendo y se pase del límite dado para saltar.
+        saltar();
     }
     else{
         if (evento.keyCode==32 && muerto==true){
@@ -74,6 +73,20 @@ function dibujarCactus(){//La variable tendrá una función
     contexto.drawImage(cactus, xc, 264,38,60); //El fondo se dibujará en la posición 00
 }
 
+function saltar(){
+    if(!saltando) yMoto-=130; //Si saltando es verdadero sube 50 en y
+    saltando=true;  //Es para que al mantener apretada la tecla no siga subiendo y se pase del límite dado para saltar.
+
+}
+function gravedad(){
+    if (saltando==true){
+        yMoto +=2; //Velocidad en que cae el personaje
+    if (yMoto>255){ //Para que vuelva al piso
+        yMoto=255;
+        saltando=false;
+        }
+    }
+}
 function MovCactus(){
     if(xc <-5){
         xc = ancho+100;
@@ -110,7 +123,7 @@ function cartelesFueraBucle(){
         contexto.fillStyle = "#A52A2A";
         contexto.fillText("Pausa.",270,200);
     }
-    if (score==2){
+    if (score==30){
         contexto.font ="bold 40px Courier Nuevo";
         contexto.fillStyle = "#A52A2A";
         contexto.fillText("¡Ganaste!",234,200);
@@ -121,7 +134,7 @@ function pararJuego(){
         stop= false;
         varPausa=0;
     }
-    if (score==2){
+    if (score==30){
         stop=true;
     }
 }
@@ -159,18 +172,8 @@ function actualizarJuego(){ //La función actualizarJuego hará:
     cartelesFueraBucle();
     if (muerto!=true && score<30 && stop==false){
         borrarCanvas();
-        yMoto +=2; //Velocidad en que cae el personaje
-        if (yMoto>255){ //Para que vuelva al piso
-            yMoto=255;
-            saltando=false;
-        }
-        //if (x>=575){ //Para que no se pase del límite de la pantalla
-        //    x=575;
-        //}
-        //if (x<=0){//Para que no se pase del límite de la pantalla
-        //    x=0;
-        //}
         dibujarFondo(); // Dibuja el fondo en la posicion 00 con un ancho de 640 y un largo de 380
+        gravedad();
         choque();
         sumarPuntos();
         MovCactus();
